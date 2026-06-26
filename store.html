@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Storefront</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        padding: 2rem 1rem;
+      }
+
+      .store-shell {
+        width: min(1200px, 95vw);
+        margin: 0 auto;
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .hero,
+      .gallery-card,
+      .product-grid,
+      .cart-card,
+      .checkout-card {
+        background: rgba(255, 255, 255, 0.95);
+        color: #111827;
+        border-radius: 18px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+      }
+
+      .hero {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .promo-bar {
+        overflow: hidden;
+        background: linear-gradient(90deg, #dc2626, #ef4444);
+        color: #fff;
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .promo-track {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scroll-left 12s linear infinite;
+        padding-left: 100%;
+      }
+
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .hero .btn {
+        background: #16a34a;
+        margin-top: 0;
+      }
+
+      .hero .btn:hover {
+        background: #15803d;
+      }
+
+      .search-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .search-row input {
+        flex: 1;
+        min-width: 220px;
+      }
+
+      .gallery-card {
+        padding: 1.5rem;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .gallery-item {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e5e7eb;
+      }
+
+      .gallery-item img {
+        display: block;
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+      }
+
+      .gallery-item figcaption {
+        padding: 0.75rem;
+        background: #f9fafb;
+        font-weight: 600;
+      }
+
+      .product-grid {
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 1rem;
+      }
+
+      .product-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 1rem;
+        background: #f9fafb;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .product-card h3 {
+        margin: 0.2rem 0 0;
+      }
+
+      .price {
+        font-weight: 700;
+        color: #2563eb;
+        margin: 0;
+      }
+
+      .cart-card,
+      .checkout-card {
+        padding: 1.5rem;
+      }
+
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .checkout-form {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .checkout-form input,
+      .checkout-form select {
+        padding: 0.8rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+      }
+
+      .payment-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .payment-options label {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.6rem 0.8rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 999px;
+        background: #f9fafb;
+        cursor: pointer;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .status {
+        margin-top: 0.75rem;
+        color: #15803d;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="store-shell">
+      <div class="promo-bar" aria-label="Sales announcements">
+        <div class="promo-track" id="promoTrack">Flash Sale: Save 20% on select furniture • Free shipping over $150 • Weekend deal: 15% off lighting • Limited-time offer: Buy 2, get 1 free on notebooks</div>
+      </div>
+
+      <header class="hero">
+        <div>
+          <p class="subtle">Featured Collection</p>
+          <h1>Modern Essentials</h1>
+          <p>Curated products for everyday comfort, style, and productivity.</p>
+          <div class="nav-links">
+            <a href="index.html">Warning</a>
+            <a href="login.html">Login</a>
+          </div>
+        </div>
+        <a class="btn" href="#products">Shop Now</a>
+      </header>
+
+      <section class="gallery-card">
+        <h2>Inspiration Gallery</h2>
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23dbeafe'/%3E%3Cpath d='M70 220h260' stroke='%232563eb' stroke-width='16' stroke-linecap='round'/%3E%3Crect x='95' y='95' width='120' height='90' rx='12' fill='%231d4ed8'/%3E%3Crect x='235' y='70' width='90' height='120' rx='12' fill='%231e40af'/%3E%3C/svg%3E" alt="Bright interior" />
+            <figcaption>Bright Living</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23ecfccb'/%3E%3Ccircle cx='135' cy='120' r='55' fill='%2316a34a'/%3E%3Crect x='95' y='180' width='210' height='40' rx='20' fill='%231583d8'/%3E%3C/svg%3E" alt="Warm workspace" />
+            <figcaption>Warm Workspace</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23fef3c7'/%3E%3Crect x='90' y='100' width='220' height='110' rx='16' fill='%23f59e0b'/%3E%3Crect x='115' y='125' width='170' height='65' rx='8' fill='%23fff7ed'/%3E%3C/svg%3E" alt="Weekend setup" />
+            <figcaption>Weekend Setup</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="products" class="product-grid">
+        <div class="search-row">
+          <input id="searchInput" type="search" placeholder="Search products" />
+          <button class="btn" type="button">Find Items</button>
+        </div>
+        <article class="product-card" data-name="ergo chair" data-category="furniture">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23f3f4f6'/%3E%3Crect x='100' y='95' width='160' height='115' rx='18' fill='%2394a3b8'/%3E%3Crect x='118' y='75' width='125' height='30' rx='12' fill='%236b7280'/%3E%3Crect x='130' y='210' width='100' height='20' rx='10' fill='%233b82f6'/%3E%3C/svg%3E" alt="Ergo Chair" />
+          <h3>Ergo Chair</h3>
+          <p>Comfort-first seating for long work sessions.</p>
+          <p class="price">$249</p>
+          <button class="btn add-to-cart" type="button">Add to Cart</button>
+        </article>
+
+        <article class="product-card" data-name="smart lamp" data-category="lighting">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23fef2f2'/%3E%3Crect x='145' y='70' width='70' height='120' rx='20' fill='%23fb923c'/%3E%3Crect x='120' y='190' width='120' height='25' rx='12' fill='%23ef4444'/%3E%3Ccircle cx='180' cy='120' r='25' fill='%23fde68a'/%3E%3C/svg%3E" alt="Smart Lamp" />
+          <h3>Smart Lamp</h3>
+          <p>Adjustable lighting with a warm ambient glow.</p>
+          <p class="price">$79</p>
+          <button class="btn add-to-cart" type="button">Add to Cart</button>
+        </article>
+
+        <article class="product-card" data-name="notebook set" data-category="stationery">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23eff6ff'/%3E%3Crect x='110' y='85' width='140' height='130' rx='12' fill='%23ffffff'/%3E%3Crect x='125' y='100' width='110' height='20' rx='6' fill='%236b7280'/%3E%3Crect x='125' y='130' width='80' height='12' rx='6' fill='%2394a3b8'/%3E%3Crect x='125' y='150' width='95' height='12' rx='6' fill='%2394a3b8'/%3E%3C/svg%3E" alt="Notebook Set" />
+          <h3>Notebook Set</h3>
+          <p>Premium paper and elegant covers for daily notes.</p>
+          <p class="price">$29</p>
+          <button class="btn add-to-cart" type="button">Add to Cart</button>
+        </article>
+      </section>
+
+      <section class="cart-card">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <div class="cart-item"><strong>Total</strong><strong id="cartTotal">$0</strong></div>
+      </section>
+
+      <section class="checkout-card">
+        <h2>Checkout</h2>
+        <form class="checkout-form" id="checkoutForm">
+          <input type="text" placeholder="Full name" required />
+          <input type="email" placeholder="Email address" required />
+          <input type="text" placeholder="Shipping address" required />
+          <select required>
+            <option value="">Select delivery method</option>
+            <option>Standard</option>
+            <option>Express</option>
+          </select>
+          <div>
+            <label for="paymentMethod">Payment method</label>
+            <div class="payment-options" id="paymentMethod">
+              <label><input type="radio" name="payment" value="Credit Card" checked /> Credit Card</label>
+              <label><input type="radio" name="payment" value="PayPal" /> PayPal</label>
+              <label><input type="radio" name="payment" value="Bank Transfer" /> Bank Transfer</label>
+            </div>
+          </div>
+          <button class="btn" type="submit">Place Order</button>
+        </form>
+        <p class="status" id="checkoutStatus"></p>
+      </section>
+    </div>
+
+    <script>
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartTotal = document.getElementById('cartTotal');
+      const checkoutForm = document.getElementById('checkoutForm');
+      const checkoutStatus = document.getElementById('checkoutStatus');
+      const searchInput = document.getElementById('searchInput');
+      const promoTrack = document.getElementById('promoTrack');
+      const productCards = Array.from(document.querySelectorAll('.product-card'));
+      const cart = [];
+      const salesMessages = [
+        'Flash Sale: Save 20% on select furniture',
+        'Free shipping over $150 this weekend',
+        '15% off lighting for a limited time',
+        'Buy 2, get 1 free on notebooks'
+      ];
+      let promoIndex = 0;
+
+      function rotatePromoMessage() {
+        promoTrack.textContent = salesMessages[promoIndex];
+        promoIndex = (promoIndex + 1) % salesMessages.length;
+      }
+
+      rotatePromoMessage();
+      setInterval(rotatePromoMessage, 3000);
+
+      function formatPrice(value) {
+        return `$${value.toFixed(0)}`;
+      }
+
+      function renderCart() {
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = '<p class="subtle">Your cart is empty.</p>';
+          cartTotal.textContent = '$0';
+          return;
+        }
+
+        const itemMarkup = cart.map((item) => `
+          <div class="cart-item">
+            <span>${item.name}</span>
+            <span>${formatPrice(item.price)}</span>
+          </div>
+        `).join('');
+
+        cartItemsContainer.innerHTML = itemMarkup;
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        cartTotal.textContent = formatPrice(total);
+      }
+
+      document.querySelectorAll('.add-to-cart').forEach((button) => {
+        button.addEventListener('click', () => {
+          const card = button.closest('.product-card');
+          const name = card.dataset.name;
+          const price = Number(card.querySelector('.price').textContent.replace(/[^\d]/g, ''));
+          cart.push({ name, price });
+          renderCart();
+          checkoutStatus.textContent = `${name} added to your cart.`;
+        });
+      });
+
+      searchInput.addEventListener('input', (event) => {
+        const query = event.target.value.toLowerCase();
+        productCards.forEach((card) => {
+          const text = `${card.dataset.name} ${card.dataset.category}`.toLowerCase();
+          card.style.display = text.includes(query) ? 'flex' : 'none';
+        });
+      });
+
+      checkoutForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (cart.length === 0) {
+          checkoutStatus.textContent = 'Add at least one item before checking out.';
+          return;
+        }
+
+        const selectedPayment = checkoutForm.querySelector('input[name="payment"]:checked')?.value || 'Not selected';
+        window.location.href = `payment-details.html?payment=${encodeURIComponent(selectedPayment)}`;
+      });
+
+      renderCart();
+    </script>
+  </body>
+</html>
