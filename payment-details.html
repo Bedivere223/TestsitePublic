@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Details</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        padding: 2rem 1rem;
+      }
+
+      .details-shell {
+        width: min(700px, 95vw);
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        color: #111827;
+        border-radius: 18px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+        padding: 2rem;
+      }
+
+      .details-form {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .details-form input,
+      .details-form textarea {
+        padding: 0.8rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+      }
+
+      .details-form textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+
+      .nav-links a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .status {
+        margin-top: 0.75rem;
+        color: #15803d;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="details-shell">
+      <div class="nav-links">
+        <a href="store.html">Back to Store</a>
+      </div>
+      <h1>Payment Details</h1>
+      <p id="paymentHeading">Please enter the details for your selected payment method.</p>
+
+      <form class="details-form" id="paymentDetailsForm">
+        <div id="dynamicFields"></div>
+        <textarea placeholder="Additional notes"></textarea>
+        <button class="btn" type="submit">Submit Payment Details</button>
+      </form>
+      <p class="status" id="detailsStatus"></p>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const paymentMethod = params.get('payment') || 'Credit Card';
+      const heading = document.getElementById('paymentHeading');
+      const dynamicFields = document.getElementById('dynamicFields');
+      const form = document.getElementById('paymentDetailsForm');
+      const status = document.getElementById('detailsStatus');
+
+      const fieldMap = {
+        'Credit Card': [
+          { label: 'Card Number', type: 'text', placeholder: '1234 5678 9012 3456' },
+          { label: 'Expiry Date', type: 'text', placeholder: 'MM/YY' },
+          { label: 'CVV', type: 'text', placeholder: '123' }
+        ],
+        'PayPal': [
+          { label: 'PayPal Email', type: 'email', placeholder: 'you@example.com' }
+        ],
+        'Bank Transfer': [
+          { label: 'Bank Name', type: 'text', placeholder: 'Example Bank' },
+          { label: 'Account Holder', type: 'text', placeholder: 'Your Name' },
+          { label: 'Reference Number', type: 'text', placeholder: 'Ref-001' }
+        ]
+      };
+
+      heading.textContent = `Please enter the details for ${paymentMethod}.`;
+
+      const fields = fieldMap[paymentMethod] || fieldMap['Credit Card'];
+      dynamicFields.innerHTML = fields.map((field) => `
+        <label>
+          ${field.label}
+          <input type="${field.type}" placeholder="${field.placeholder}" required />
+        </label>
+      `).join('');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        status.textContent = `Payment details submitted for ${paymentMethod}.`;
+      });
+    </script>
+  </body>
+</html>
