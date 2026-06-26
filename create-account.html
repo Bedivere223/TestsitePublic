@@ -10,18 +10,36 @@
     <main class="card">
       <h1>Create Account</h1>
       <p>Sign up to access the storefront and order history.</p>
-      <form>
+      <form id="createAccountForm">
         <label for="name">Full Name</label>
-        <input id="name" type="text" placeholder="Your name" />
+        <input id="name" type="text" placeholder="Your name" required />
 
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="you@example.com" />
+        <input id="email" type="email" placeholder="you@example.com" required />
 
         <label for="password">Password</label>
-        <input id="password" type="password" placeholder="Create a password" />
+        <input id="password" type="password" placeholder="Create a password" required />
 
         <button class="btn" type="submit">Create Account</button>
       </form>
+
+      <script>
+        const form = document.getElementById('createAccountForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+
+          const isValid = nameInput.value.trim() && emailInput.value.trim() && passwordInput.value.trim();
+          if (!isValid) {
+            return;
+          }
+
+          window.location.href = 'login.html';
+        });
+      </script>
     </main>
   </body>
 </html>
