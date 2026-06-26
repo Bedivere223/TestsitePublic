@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        padding: 2rem 1rem;
+      }
+
+      .catalog-shell {
+        width: min(1200px, 95vw);
+        margin: 0 auto;
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .top-card,
+      .product-grid-card {
+        background: rgba(255, 255, 255, 0.95);
+        color: #111827;
+        border-radius: 18px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+      }
+
+      .top-card {
+        padding: 2rem;
+      }
+
+      .top-card h1 {
+        margin-top: 0;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .controls select,
+      .controls input {
+        padding: 0.8rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+      }
+
+      .product-grid-card {
+        padding: 1.5rem;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 1rem;
+      }
+
+      .product-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 1rem;
+        background: #f9fafb;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .product-card h3 {
+        margin: 0.2rem 0 0;
+      }
+
+      .price {
+        font-weight: 700;
+        color: #2563eb;
+        margin: 0;
+      }
+
+      .cart-status {
+        margin-top: 0.25rem;
+        color: #15803d;
+        font-weight: 600;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+
+      .nav-links a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="catalog-shell">
+      <div class="top-card">
+        <div class="nav-links">
+          <a href="store.html">Storefront</a>
+          <a href="index.html">Warning</a>
+          <a href="login.html">Login</a>
+        </div>
+        <h1>Explore More Products</h1>
+        <p>Browse a wider catalog and filter by category.</p>
+        <div class="controls">
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="furniture">Furniture</option>
+            <option value="lighting">Lighting</option>
+            <option value="tech">Tech</option>
+            <option value="home">Home Decor</option>
+          </select>
+          <input id="searchInput" type="search" placeholder="Search products" />
+        </div>
+      </div>
+
+      <section class="product-grid-card">
+        <p class="cart-status" id="cartStatus">Your cart is ready.</p>
+        <div class="product-grid">
+          <article class="product-card" data-name="minimal desk" data-category="furniture" data-price="189">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23f8fafc'/%3E%3Crect x='90' y='120' width='220' height='90' rx='12' fill='%2394a3b8'/%3E%3Crect x='110' y='95' width='180' height='30' rx='10' fill='%236b7280'/%3E%3C/svg%3E" alt="Minimal Desk" />
+            <h3>Minimal Desk</h3>
+            <p>Clean lines and quiet storage for focused work.</p>
+            <p class="price">$189</p>
+            <button class="btn add-to-cart" type="button">Add to Cart</button>
+          </article>
+
+          <article class="product-card" data-name="ambient floor lamp" data-category="lighting" data-price="129">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23fff7ed'/%3E%3Crect x='150' y='70' width='80' height='140' rx='20' fill='%23fb923c'/%3E%3Crect x='125' y='205' width='130' height='25' rx='12' fill='%23f59e0b'/%3E%3C/svg%3E" alt="Ambient Floor Lamp" />
+            <h3>Ambient Floor Lamp</h3>
+            <p>Soft illumination for calm evenings at home.</p>
+            <p class="price">$129</p>
+            <button class="btn add-to-cart" type="button">Add to Cart</button>
+          </article>
+
+          <article class="product-card" data-name="wireless speaker" data-category="tech" data-price="99">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23eff6ff'/%3E%3Crect x='130' y='90' width='120' height='120' rx='18' fill='%233b82f6'/%3E%3Ccircle cx='190' cy='150' r='28' fill='%23ffffff'/%3E%3C/svg%3E" alt="Wireless Speaker" />
+            <h3>Wireless Speaker</h3>
+            <p>Portable sound with rich bass and Bluetooth.</p>
+            <p class="price">$99</p>
+            <button class="btn add-to-cart" type="button">Add to Cart</button>
+          </article>
+
+          <article class="product-card" data-name="ceramic vase" data-category="home" data-price="54">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23fdf2f8'/%3E%3Cpath d='M145 90c0-25 35-40 45-40s45 15 45 40v55h-90z' fill='%23f472b6'/%3E%3Crect x='140' y='145' width='100' height='70' rx='12' fill='%23ec4899'/%3E%3C/svg%3E" alt="Ceramic Vase" />
+            <h3>Ceramic Vase</h3>
+            <p>Hand-finished decor that adds warmth to any room.</p>
+            <p class="price">$54</p>
+            <button class="btn add-to-cart" type="button">Add to Cart</button>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const categoryFilter = document.getElementById('categoryFilter');
+      const searchInput = document.getElementById('searchInput');
+      const cartStatus = document.getElementById('cartStatus');
+      const cards = Array.from(document.querySelectorAll('.product-card'));
+
+      function filterProducts() {
+        const category = categoryFilter.value;
+        const query = searchInput.value.toLowerCase();
+
+        cards.forEach((card) => {
+          const matchesCategory = category === 'all' || card.dataset.category === category;
+          const text = `${card.dataset.name} ${card.dataset.category}`.toLowerCase();
+          const matchesSearch = text.includes(query);
+          card.style.display = matchesCategory && matchesSearch ? 'flex' : 'none';
+        });
+      }
+
+      document.querySelectorAll('.add-to-cart').forEach((button) => {
+        button.addEventListener('click', () => {
+          const card = button.closest('.product-card');
+          const name = card.dataset.name;
+          cartStatus.textContent = `${name} added to your cart.`;
+        });
+      });
+
+      categoryFilter.addEventListener('change', filterProducts);
+      searchInput.addEventListener('input', filterProducts);
+    </script>
+  </body>
+</html>
