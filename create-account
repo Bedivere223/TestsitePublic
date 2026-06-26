@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Create Account</h1>
+      <p>Sign up to access the storefront and order history.</p>
+      <form>
+        <label for="name">Full Name</label>
+        <input id="name" type="text" placeholder="Your name" />
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Create a password" />
+
+        <button class="btn" type="submit">Create Account</button>
+      </form>
+    </main>
+  </body>
+</html>
